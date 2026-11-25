@@ -1,0 +1,6 @@
+Earth surface, cloud, normal, specular, night-light, and water normal
+texture maps are from the texture examples in Three.js r160 and are distributed
+under the Three.js MIT license.
+
+Source: https://github.com/mrdoob/three.js/tree/r160/examples/textures
+License: https://github.com/mrdoob/three.js/blob/r160/LICENSE

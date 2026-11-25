@@ -1,0 +1,36 @@
+:root {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Sora', 'Inter', sans-serif;
+
+  --color-background: #ffffff;
+  --color-surface: #f4f4f5;
+  --color-surface-strong: #eeeeef;
+  --color-text: #0a0a0a;
+  --color-text-muted: #52525b;
+  --color-text-subtle: #9a9aa3;
+  --color-border: rgb(0 0 0 / 8%);
+  --color-border-strong: rgb(0 0 0 / 14%);
+  --color-accent: #e3241b;
+  --color-accent-hover: #c91f18;
+  --color-on-accent: #ffffff;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 4%), 0 10px 30px -12px rgb(0 0 0 / 14%);
+  --shadow-card-lg: 0 2px 4px rgb(0 0 0 / 4%), 0 30px 60px -24px rgb(0 0 0 / 28%);
+  --shadow-button: 0 12px 28px -14px rgb(0 0 0 / 60%);
+
+  --radius-small: 10px;
+  --radius-medium: 18px;
+  --radius-large: 26px;
+  --radius-pill: 999px;
+
+  --content-width: 1200px;
+  --page-gutter: 24px;
+}
