@@ -148,7 +148,7 @@ function ShipmentJourneySection() {
   const [routePercent, setRoutePercent] = useState(0)
   const currentStage = shipmentStages[activeStage]
 
-  const syncUI = useCallback((stageIndex, shipPercent, day) => {
+  const syncUI = useCallback((shipPercent, day) => {
     if (fillRef.current) {
       fillRef.current.style.width = `${shipPercent}%`
     }
@@ -157,10 +157,6 @@ function ShipmentJourneySection() {
     }
     if (day !== null && dayRef.current) {
       dayRef.current.textContent = `Day ${day}`
-    }
-    if (stageIndex !== null) {
-      setActiveStage(stageIndex)
-      setRoutePercent(Math.round(shipPercent))
     }
   }, [])
 

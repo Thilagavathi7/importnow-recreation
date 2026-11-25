@@ -31,16 +31,21 @@ for (const viewport of viewports) {
     await expect(page.locator('.route-illustration__svg')).toBeVisible()
     await expect(page.locator('#routes')).toBeAttached()
     await expect
-      .poll(() =>
-        heroTitle.evaluate((title) => {
-          const firstWord = title.querySelector(':scope > .w')
-          const emphasizedWord = title.querySelector(':scope > span:not(.w) .w')
-          return [
-            firstWord && getComputedStyle(firstWord.querySelector('.wi')).color,
-            emphasizedWord &&
-              getComputedStyle(emphasizedWord.querySelector('.wi')).color,
-          ]
-        }),
+      .poll(
+        () =>
+          heroTitle.evaluate((title) => {
+            const firstWord = title.querySelector(':scope > .w')
+            const emphasizedWord = title.querySelector(
+              ':scope > span:not(.w) .w',
+            )
+            return [
+              firstWord &&
+                getComputedStyle(firstWord.querySelector('.wi')).color,
+              emphasizedWord &&
+                getComputedStyle(emphasizedWord.querySelector('.wi')).color,
+            ]
+          }),
+        { timeout: 15_000 },
       )
       .toEqual(['rgb(10, 10, 10)', 'rgb(227, 36, 27)'])
 

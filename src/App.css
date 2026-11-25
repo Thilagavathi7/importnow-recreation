@@ -335,6 +335,10 @@
   transition: opacity 0.3s;
 }
 
+.earth-globe[data-renderer='three'] .earth-location {
+  display: none;
+}
+
 .earth-location .flag {
   width: 14px;
   height: 10px;

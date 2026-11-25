@@ -109,7 +109,6 @@ function App() {
       window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
     const tiltCleanups = []
-    let onPointerMoveMagnet
 
     if (finePointer) {
       document.querySelectorAll('.tilt').forEach((card) => {
@@ -131,21 +130,6 @@ function App() {
           card.removeEventListener('pointerleave', onLeave)
         })
       })
-
-      onPointerMoveMagnet = (event) => {
-        const button = event.target.closest?.('.button--primary, .button--secondary')
-        document.querySelectorAll('.magnet').forEach((el) => {
-          if (el !== button) {
-            el.style.transform = ''
-            el.classList.remove('magnet')
-          }
-        })
-        if (!button) return
-        const rect = button.getBoundingClientRect()
-        button.classList.add('magnet')
-        button.style.transform = `translate(${((event.clientX - rect.left) / rect.width - 0.5) * 12}px, ${((event.clientY - rect.top) / rect.height - 0.5) * 10}px)`
-      }
-      document.addEventListener('pointermove', onPointerMoveMagnet)
     }
 
     return () => {
@@ -154,9 +138,6 @@ function App() {
       window.removeEventListener('scroll', updateProgress)
       window.removeEventListener('resize', updateProgress)
       tiltCleanups.forEach((cleanup) => cleanup())
-      if (onPointerMoveMagnet) {
-        document.removeEventListener('pointermove', onPointerMoveMagnet)
-      }
     }
   }, [])
 

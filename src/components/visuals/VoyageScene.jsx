@@ -5,7 +5,6 @@ import { Water } from 'three/addons/objects/Water.js'
 import {
   getShipProgress,
   getVoyageDay,
-  JOURNEY_STEP_THRESHOLDS,
 } from '../../data/shipmentStages.js'
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v))
@@ -1121,7 +1120,6 @@ function VoyageScene({ progressRef, hostRef, onReady, onSyncUI }) {
 
     let prog = clamp(progressRef.current || 0, 0, 1)
     let lastX = 0
-    let lastStep = -1
     let lastDay = -1
     let visible = false
     let animationFrame = 0
@@ -1249,17 +1247,12 @@ function VoyageScene({ progressRef, hostRef, onReady, onSyncUI }) {
       camAt(p, sx)
       renderer.render(scene, camera)
 
-      let si = 0
-      for (let i = 0; i < JOURNEY_STEP_THRESHOLDS.length; i += 1) {
-        if (p >= JOURNEY_STEP_THRESHOLDS[i]) si = i
-      }
       const day = getVoyageDay(p)
-      if (si !== lastStep || day !== lastDay) {
-        lastStep = si
+      if (day !== lastDay) {
         lastDay = day
-        onSyncUI?.(si, Math.round(shipFrac * 100), day)
+        onSyncUI?.(Math.round(shipFrac * 100), day)
       } else {
-        onSyncUI?.(null, shipFrac * 100, null)
+        onSyncUI?.(shipFrac * 100, null)
       }
     }
 

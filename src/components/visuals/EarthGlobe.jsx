@@ -460,8 +460,8 @@ function EarthGlobe() {
         const tr = txt ? Math.min(txt.getBoundingClientRect().right - hr.left, w * 0.62) : w * 0.5
         const trw = (tr / w - 0.5) * 2 * hw
         const avail = hw - trw
-        const r = Math.min(hh * 0.8, Math.max(avail * 0.78, hh * 0.5))
-        outer.position.set(trw + 0.18 + r * 1.12, -0.15, 0)
+        const r = Math.min(hh * 0.66, Math.max(avail * 0.78, hh * 0.5))
+        outer.position.set(trw + 0.56 + r * 1.12, -0.15, 0)
         scale = r / radius
         const bleed = outer.position.x + r - hw
         yawOff = bleed > 0 ? -Math.asin(Math.min(1, bleed / r)) * 0.75 : 0
@@ -470,8 +470,8 @@ function EarthGlobe() {
         const hh = camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))
         const k = (2 * hh) / h
         const vh = Math.min(window.innerHeight, h)
-        const rPx = Math.min(vh * 0.2, w * 0.42)
-        const cyPx = Math.max(vh * 0.27, rPx + 84)
+        const rPx = Math.min(vh * 0.156, w * 0.42)
+        const cyPx = Math.max(vh * 0.288, rPx + 84)
         outer.position.set(0, hh - cyPx * k, 0)
         scale = (rPx * k) / radius
       }
